@@ -21,7 +21,7 @@ app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI)
-    .then().catch(err => console.log(err));
+    .then().catch((err: Error) => console.log(err));
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)

@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const todoController = require("../controllers/todoController");
 
 //matches with /api/todos
