@@ -5,4 +5,6 @@ var todoController = require("../controllers/todoController");
 router.route("/todos")
     .get(todoController.findAll)
     .post(todoController.create);
+router.route("/todo/:id")
+    .put(todoController.update);
 module.exports = router;
