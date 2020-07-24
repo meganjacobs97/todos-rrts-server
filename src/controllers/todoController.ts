@@ -24,6 +24,7 @@ module.exports = {
             .catch((err: ErrorRequestHandler) => res.status(422).json(err));
     },
     update: (req: RequestWithBody, res: Response) => {
+        console.log(req)
         const filter = { id: mongoose.ObjectId(req.params.id) };
         const update = req.body;
         console.log(req.body);
@@ -32,5 +33,13 @@ module.exports = {
                 res.json(todo)
             })
             .catch((err: ErrorRequestHandler) => res.status(422).json(err));
+    },
+    delete: (req: RequestWithBody, res: Response) => {
+        const filter = { id: mongoose.ObjectId(req.params.id) };
+        db.Todo.findOne(filter).then((todo: Todo) => {
+            db.Todo.deleteOne(filter)
+                .then((result: number) => res.json(todo))
+        }).catch((err: ErrorRequestHandler) => res.status(422).json(err));
+
     }
 }

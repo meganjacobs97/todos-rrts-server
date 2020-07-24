@@ -15,6 +15,7 @@ module.exports = {
             .catch(function (err) { return res.status(422).json(err); });
     },
     update: function (req, res) {
+        console.log(req);
         var filter = { id: mongoose.ObjectId(req.params.id) };
         var update = req.body;
         console.log(req.body);
@@ -23,5 +24,12 @@ module.exports = {
             res.json(todo);
         })
             .catch(function (err) { return res.status(422).json(err); });
+    },
+    delete: function (req, res) {
+        var filter = { id: mongoose.ObjectId(req.params.id) };
+        db.Todo.findOne(filter).then(function (todo) {
+            db.Todo.deleteOne(filter)
+                .then(function (result) { return res.json(todo); });
+        }).catch(function (err) { return res.status(422).json(err); });
     }
 };

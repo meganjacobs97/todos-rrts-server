@@ -6,5 +6,6 @@ router.route("/todos")
     .get(todoController.findAll)
     .post(todoController.create);
 router.route("/todo/:id")
-    .put(todoController.update);
+    .put(todoController.update)
+    .delete(todoController.delete);
 module.exports = router;

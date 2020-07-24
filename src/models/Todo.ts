@@ -22,5 +22,11 @@ const TodoSchema: Schema = new Schema({
     }
 })
 
+// Ensure virtual fields are serialised
+//for id field 
+TodoSchema.set('toJSON', {
+    virtuals: true
+});
+
 const Todo = mongoose.model<ITodo>("Todo", TodoSchema);
 module.exports = Todo; 
